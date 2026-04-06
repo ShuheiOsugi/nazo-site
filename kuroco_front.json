@@ -1,14 +1,3 @@
 {
-  "version": 1,
-  "publicDir": "./",
-  "outputDir": "./",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
-  "redirects": [],
-  "basic": [],
-  "ip_restrictions": []
+  "pub": "out"
 }
