@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "echo 'No dev server needed'",
-    "build": "mkdir -p out && cp *.html out/ 2>/dev/null || true && cp style.css out/ 2>/dev/null || true",
+    "build": "mkdir -p out && (cp *.html out/ 2>/dev/null || true) && (cp style.css out/ 2>/dev/null || true)",
     "start": "echo 'No start needed'"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
