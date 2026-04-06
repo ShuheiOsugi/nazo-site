@@ -61,21 +61,21 @@ jobs:
 
       - name: Validate kuroco_front.json
         run: |
-          if [ -f "./out/kuroco_front.json" ]; then
+          if [ -f "./kuroco_front.json" ]; then
             echo "kuroco_front.json found"
-            if jq empty ./out/kuroco_front.json; then
+            if jq empty ./kuroco_front.json; then
               echo "kuroco_front.json is valid JSON"
             else
               echo "Error: kuroco_front.json is not valid JSON"
               exit 1
             fi
           else
-            echo "Error: kuroco_front.json not found in out folder"
+            echo "Error: kuroco_front.json not found in repository root"
             exit 1
           fi
 
       - name: Zip artifact for upload
-        run: cd out && zip ../out.zip . -r
+        run: zip -r out.zip public kuroco_front.json
 
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v4
@@ -126,21 +126,21 @@ jobs:
 
       - name: Validate kuroco_front.json
         run: |
-          if [ -f "./out/kuroco_front.json" ]; then
+          if [ -f "./kuroco_front.json" ]; then
             echo "kuroco_front.json found"
-            if jq empty ./out/kuroco_front.json; then
+            if jq empty ./kuroco_front.json; then
               echo "kuroco_front.json is valid JSON"
             else
               echo "Error: kuroco_front.json is not valid JSON"
               exit 1
             fi
           else
-            echo "Error: kuroco_front.json not found in out folder"
+            echo "Error: kuroco_front.json not found in repository root"
             exit 1
           fi
 
       - name: Zip artifact for upload
-        run: cd out && zip ../out.zip . -r
+        run: zip -r out.zip public kuroco_front.json
 
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v4
