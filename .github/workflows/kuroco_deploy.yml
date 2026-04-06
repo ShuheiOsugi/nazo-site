@@ -23,7 +23,7 @@ jobs:
           npm run build
 
       - name: Deploy
-        # ↓ バージョン指定をより確実に「@v1」から「@master」に変更しました
+        # ↓ この「@master」まで含めた大文字表記が最も確実です
         uses: Kuroco-front/kuroco-front-action@master
         with:
           token: ${{ secrets.KUROCO_FRONT_TOKEN }}
