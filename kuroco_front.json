@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "publicDir": "./",
+  "rewrites": [
+    {
+      "source": ".*",
+      "destination": "/index.html"
+    }
+  ],
+  "redirects": [],
+  "basic": [],
+  "ip_restrictions": []
+}
