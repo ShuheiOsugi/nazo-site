@@ -14,8 +14,8 @@ jobs:
 
       - name: Deploy to Kuroco (Direct)
         run: |
-          # 全てのファイルをzipの直下に固める
-          zip -j output.zip ./*.html ./*.css ./*.json
+          # フォルダを作らず、リポジトリ直下のファイルをそのまま固める
+          zip -r output.zip . -x "*.git*" ".github*" "node_modules*" "package*"
           
           curl -X POST "https://shumunazo.g.kuroco.app/direct/menu/github/" \
             -H "X-Kuroco-Auth: ${{ secrets.KUROCO_FRONT_TOKEN }}" \
