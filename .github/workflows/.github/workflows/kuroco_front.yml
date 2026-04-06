@@ -1,14 +1,11 @@
-name: Deploy static HTML to KurocoFront
+name: Deploy static site to KurocoFront
 on:
   push:
     branches: [ main ]
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Prepare static files
-        run: echo "Static HTML deployment - no build step needed"
+      - uses: actions/checkout@v4
+      - name: Deploy static HTML (no build)
+        run: echo "Static HTML deployment - no build step"
