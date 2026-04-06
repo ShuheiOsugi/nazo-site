@@ -30,3 +30,4 @@ jobs:
           token: ${{ secrets.KUROCO_FRONT_TOKEN }}
           repository_id: ${{ github.event.repository.id }}
           output_dir: out
+          
