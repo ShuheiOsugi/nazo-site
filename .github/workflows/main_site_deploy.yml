@@ -6,32 +6,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_and_deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Build
-        run: |
-          npm install
-          npm run build
-
       - name: Deploy to Kuroco (Direct)
         run: |
-          # 確実に 'index.html' が zip の直下に来るように固めます
-          # もし 'out' フォルダがない場合は、リポジトリ直下のファイルを対象にします
-          if [ -d "out" ]; then
-            cd out && zip -r ../output.zip ./* && cd ..
-          else
-            zip -r output.zip ./* -x "*.git*" ".github*" "node_modules*" "package*"
-          fi
-
+          # リポジトリにある全HTMLとCSS、JSONをフォルダ階層なしでzipにする
+          zip -j output.zip ./*.html ./*.css ./*.json
+          
           curl -X POST "https://shumunazo.g.kuroco.app/direct/menu/github/" \
             -H "X-Kuroco-Auth: ${{ secrets.KUROCO_FRONT_TOKEN }}" \
             -F "repository_id=24021400564" \
