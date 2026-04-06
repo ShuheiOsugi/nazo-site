@@ -28,6 +28,6 @@ jobs:
         uses: Kuroco-front/kuroco-front-action@v1
         with:
           token: ${{ secrets.KUROCO_FRONT_TOKEN }}
-          repository_id: ${{ github.event.repository.id }}
+          repository_id: 24021400564
           output_dir: out
           
