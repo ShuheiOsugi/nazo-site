@@ -23,8 +23,8 @@ jobs:
           npm run build
 
       - name: Deploy
-        # ↓ ここの記述を「完全なURL形式」に変更しました
-        uses: https://github.com/Kuroco-front/kuroco-front-action@v1
+        # ↓ バージョン指定をより確実に「@v1」から「@master」に変更しました
+        uses: Kuroco-front/kuroco-front-action@master
         with:
           token: ${{ secrets.KUROCO_FRONT_TOKEN }}
           repository_id: 24021400564
