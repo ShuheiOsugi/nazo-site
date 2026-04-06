@@ -24,12 +24,12 @@ jobs:
 
       - name: Deploy to Kuroco (Direct)
         run: |
-          # 1. もし out フォルダがない場合に備え、カレントディレクトリも考慮
-          # 2. index.html が確実にルートに来るように zip を作成
+          # 確実に 'index.html' が zip の直下に来るように固めます
+          # もし 'out' フォルダがない場合は、リポジトリ直下のファイルを対象にします
           if [ -d "out" ]; then
-            cd out && zip -r ../output.zip . && cd ..
+            cd out && zip -r ../output.zip ./* && cd ..
           else
-            zip -r output.zip . -x "*.git*" ".github*"
+            zip -r output.zip ./* -x "*.git*" ".github*" "node_modules*" "package*"
           fi
 
           curl -X POST "https://shumunazo.g.kuroco.app/direct/menu/github/" \
