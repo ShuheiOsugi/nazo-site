@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "mkdir -p out && cp *.html out/ && cp style.css out/ || true"
+    "dev": "echo 'No dev server needed'",
+    "build": "mkdir -p out && cp *.html out/ 2>/dev/null || true && cp style.css out/ 2>/dev/null || true",
+    "start": "echo 'No start needed'"
   }
 }
