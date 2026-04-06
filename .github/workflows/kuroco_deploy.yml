@@ -23,8 +23,8 @@ jobs:
           npm run build
 
       - name: Deploy
-        # ↓ 大文字のKを使用
-        uses: Kuroco-front/kuroco-front-action@v1
+        # ↓ ここの記述を「完全なURL形式」に変更しました
+        uses: https://github.com/Kuroco-front/kuroco-front-action@v1
         with:
           token: ${{ secrets.KUROCO_FRONT_TOKEN }}
           repository_id: 24021400564
