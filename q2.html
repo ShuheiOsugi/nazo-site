@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8"><title>問2</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <div class="container">
+    <h1>問2</h1>
+    <p>あなたが住んでいるのは？</p>
+    <form id="quizForm">
+      <input type="text" id="answer" required placeholder="キーワードを入力">
+      <button type="submit">送信</button>
+    </form>
+    <p id="result"></p>
+  </div>
+  <script>
+    if (!localStorage.getItem("q1")) {
+      alert("問1を解いてから進んでください。");
+      window.location.href = "q1.html";
+    }
+
+    const correctAnswer = "RYOGOKU";
+    const nextPage = "q3.html";
+
+    document.getElementById("quizForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const ans = document.getElementById("answer").value.trim().toUpperCase();
+      const result = document.getElementById("result");
+
+      if (ans === correctAnswer) {
+        result.textContent = "🏙 正解！次へ進みます。";
+        localStorage.setItem("q2", "true");
+        setTimeout(()=>window.location.href = nextPage,1000);
+      } else {
+        result.textContent = "❌ 不正解です。";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8"><title>問3</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <div class="container">
+    <h1>問3</h1>
+    <p>お気に入りの温泉旅館は？</p>
+    <form id="quizForm">
+      <input type="text" id="answer" required placeholder="キーワードを入力">
+      <button type="submit">送信</button>
+    </form>
+    <p id="result"></p>
+  </div>
+  <script>
+    if (!localStorage.getItem("q2")) {
+      alert("問2を解いてから進んでください。");
+      window.location.href = "q2.html";
+    }
+
+    const correctAnswer = "TATSUMIKAN";
+    const nextPage = "q4.html";
+
+    document.getElementById("quizForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const ans = document.getElementById("answer").value.trim().toUpperCase();
+      const result = document.getElementById("result");
+
+      if (ans === correctAnswer) {
+        result.textContent = "♨️ 正解！次へ進みます。";
+        localStorage.setItem("q3", "true");
+        setTimeout(()=>window.location.href = nextPage,1000);
+      } else {
+        result.textContent = "❌ 不正解です。";
+      }
+    });
+  </script>
+</body>
+</html>

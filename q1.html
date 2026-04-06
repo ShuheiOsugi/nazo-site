@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>問1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>問1</h1>
+    <p>飼い猫の名前は？</p>
+    <form id="quizForm">
+      <input type="text" id="answer" placeholder="キーワードを入力" required>
+      <button type="submit">送信</button>
+    </form>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      alert("ログインが必要です。");
+      window.location.href = "index.html";
+    }
+
+    const correctAnswer = "KOTORA";
+    const nextPage = "q2.html";
+
+    document.getElementById("quizForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const ans = document.getElementById("answer").value.trim().toUpperCase();
+
+      if (ans === correctAnswer) {
+        document.getElementById("result").textContent = "🐾 正解！次へ進みます。";
+        localStorage.setItem("q1", "true");
+        setTimeout(() => window.location.href = nextPage, 1000);
+      } else {
+        document.getElementById("result").textContent = "❌ 不正解です。";
+      }
+    });
+  </script>
+</body>
+</html>

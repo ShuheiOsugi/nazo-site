@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8"><title>問4</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <div class="container">
+    <h1>問4</h1>
+    <p>お気に入りの海外旅行先は？</p>
+    <form id="quizForm">
+      <input type="text" id="answer" required placeholder="キーワードを入力">
+      <button type="submit">送信</button>
+    </form>
+    <p id="result"></p>
+  </div>
+  <script>
+    if (!localStorage.getItem("q3")) {
+      alert("問3を解いてから進んでください。");
+      window.location.href = "q3.html";
+    }
+
+    const correctAnswer = "MALDIVES";
+    const nextPage = "q5.html";
+
+    document.getElementById("quizForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const ans = document.getElementById("answer").value.trim().toUpperCase();
+      const result = document.getElementById("result");
+
+      if (ans === correctAnswer) {
+        result.textContent = "🏝 正解！次へ進みます。";
+        localStorage.setItem("q4", "true");
+        setTimeout(()=>window.location.href = nextPage,1000);
+      } else {
+        result.textContent = "❌ 不正解です。";
+      }
+    });
+  </script>
+</body>
+</html>
