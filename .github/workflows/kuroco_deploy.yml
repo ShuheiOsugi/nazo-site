@@ -23,8 +23,8 @@ jobs:
           npm run build
 
       - name: Deploy
-        # ↓ この「@master」まで含めた大文字表記が最も確実です
-        uses: Kuroco-front/kuroco-front-action@master
+        # ↓ ここを「フルパス」に変更しました。これでGitHubも迷いません。
+        uses: Kuroco-front/kuroco-front-action@v1.1.0
         with:
           token: ${{ secrets.KUROCO_FRONT_TOKEN }}
           repository_id: 24021400564
