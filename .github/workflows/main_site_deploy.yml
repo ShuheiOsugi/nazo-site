@@ -22,10 +22,11 @@ jobs:
           npm install
           npm run build
 
-      - name: Execute Kuroco Action
-        # 大文字のKから始まる正式パスを再度指定
-        uses: Kuroco-front/kuroco-front-action@v1
-        with:
-          token: ${{ secrets.KUROCO_FRONT_TOKEN }}
-          repository_id: 24021400564
-          output_dir: out
+      - name: Deploy to Kuroco (Direct)
+        # ツールを介さず、直接URLにファイルを送りつけます
+        run: |
+          zip -r output.zip out
+          curl -X POST "https://shumunazo.g.kuroco.app/direct/menu/github/" \
+            -H "X-Kuroco-Auth: ${{ secrets.KUROCO_FRONT_TOKEN }}" \
+            -F "repository_id=24021400564" \
+            -F "file=@output.zip"
