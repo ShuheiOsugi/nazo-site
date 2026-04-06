@@ -14,7 +14,7 @@ jobs:
 
       - name: Deploy to Kuroco (Direct)
         run: |
-          # リポジトリにある全HTMLとCSS、JSONをフォルダ階層なしでzipにする
+          # 全てのファイルをzipの直下に固める
           zip -j output.zip ./*.html ./*.css ./*.json
           
           curl -X POST "https://shumunazo.g.kuroco.app/direct/menu/github/" \
