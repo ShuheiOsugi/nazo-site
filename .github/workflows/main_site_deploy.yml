@@ -23,9 +23,9 @@ jobs:
           npm run build
 
       - name: Deploy to Kuroco (Direct)
-        # ツールを介さず、直接URLにファイルを送りつけます
+        # outフォルダの「中身だけ」をzipに固めて送信するように修正しました
         run: |
-          zip -r output.zip out
+          cd out && zip -r ../output.zip . && cd ..
           curl -X POST "https://shumunazo.g.kuroco.app/direct/menu/github/" \
             -H "X-Kuroco-Auth: ${{ secrets.KUROCO_FRONT_TOKEN }}" \
             -F "repository_id=24021400564" \
