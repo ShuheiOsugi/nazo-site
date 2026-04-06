@@ -27,8 +27,6 @@ jobs:
       - name: Deploy
         uses: Kuroco-front/kuroco-front-action@v1
         with:
-          # 以下はKuroco管理画面に表示されているIDやトークンに書き換えてください
           token: ${{ secrets.KUROCO_FRONT_TOKEN }}
           repository_id: ${{ github.event.repository.id }}
-          # 成果物があるフォルダを指定
           output_dir: out
